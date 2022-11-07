@@ -4,34 +4,25 @@ require('dotenv').config()
 const port = process.env.PORT|| 3000;
 //console.log(process.env.PORT)
 
+const music = require('./models/music.js')
+
+//DB connection
 
 
-const music = [
-    {
-        song:'One Wish',
-        by: 'RayJ',
-        played: true
-    },
-    {
-        song:'September',
-        by: 'Earth, Wind and Fire',
-        played: false
-    },
-    {
-        song:'Tetris',
-        by: 'Derek King',
-        played: true
-    }
-]
+
+//Middleware
 
 
+
+
+//Routes
 
 //index route
 app.get('/apex', (req, res) => {
     res.send(music)
 })
 
-
+//show route
 app.get('/apex/:indexOfMusicArray', (req, res)=>{
     res.send(music[req.params.indexOfMusicArray])
 });
