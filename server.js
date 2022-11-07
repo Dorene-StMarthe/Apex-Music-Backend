@@ -3,7 +3,7 @@ const app = express();
 require('dotenv').config()
 const port = process.env.PORT|| 3000;
 //console.log(process.env.PORT)
-
+const routes = require('./routes');
 const music = require('./models/music.js')
 
 //DB connection
@@ -13,9 +13,8 @@ const music = require('./models/music.js')
 //Middleware
 
 
-
-
 //Routes
+//app.use('/music', routes.music);
 
 //index route
 app.get('/apex', (req, res) => {
