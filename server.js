@@ -6,9 +6,33 @@ const port = process.env.PORT|| 3000;
 
 
 
-const music = ['One Wish by RayJ', 'No One by Alicia Keys', 'September by Earth, Wind and Fire','Tetris by Derek King']
+const music = [
+    {
+        song:'One Wish',
+        by: 'RayJ',
+        played: true
+    },
+    {
+        song:'September',
+        by: 'Earth, Wind and Fire',
+        played: false
+    },
+    {
+        song:'Tetris',
+        by: 'Derek King',
+        played: true
+    }
+]
 
-app.get('/:indexOfMusicArray', (req, res)=>{
+
+
+//index route
+app.get('/apex', (req, res) => {
+    res.send(music)
+})
+
+
+app.get('/apex/:indexOfMusicArray', (req, res)=>{
     res.send(music[req.params.indexOfMusicArray])
 });
 
