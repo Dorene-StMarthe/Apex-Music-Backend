@@ -8,13 +8,13 @@ const music = require('./models/music.js')
 
 //DB connection
 
-
+require('./config/db.connection')
 
 //Middleware
 
 
 //Routes
-//app.use('/music', routes.music);
+app.use('/music', routes.music);
 
 //index route
 app.get('/apex', (req, res) => {
@@ -30,5 +30,5 @@ app.get('/apex/:indexOfMusicArray', (req, res)=>{
 
 
 app.listen(port,() => {
-console.log("Apex Music loading")
+console.log("Apex Music loading...")
 })

@@ -5,4 +5,4 @@ const ctrls = require('../controllers')
 
 router.get('/', ctrls.music.index);
 
-module.exports = router
+module.exports = router;
