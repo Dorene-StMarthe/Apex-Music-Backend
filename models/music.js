@@ -1,19 +1,24 @@
-const music = [
-    {
-        song:'One Wish',
-        by: 'RayJ',
-        played: true
-    },
-    {
-        song:'September',
-        by: 'Earth, Wind and Fire',
-        played: false
-    },
-    {
-        song:'Tetris',
-        by: 'Derek King',
-        played: true
-    }
-]
+const mongoose = require('mongoose');
 
-module.exports = music
+const musicSchema = new mongoose.Schema({
+	song: {
+    type: String, 
+    required: true
+  },
+	artist: {
+    type: String, 
+  },
+	played: {
+    type:Boolean, 
+  },
+	likes: {
+    type: String, 
+    default: 0
+  },
+	tags: [{ type:String }]
+});
+
+
+const Music = mongoose.model('Music', musicSchema)
+
+module.exports = Music;
