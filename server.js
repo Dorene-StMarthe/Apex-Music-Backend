@@ -11,10 +11,11 @@ const music = require('./models/Music.js')
 require('./config/db.connection')
 
 //Middleware
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //Routes
-app.use('/music', routes.music);
+app.use('/apex', routes.music);
 
 //index route
 app.get('/apex', (req, res) => {
