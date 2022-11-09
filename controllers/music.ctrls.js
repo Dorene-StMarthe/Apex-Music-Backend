@@ -1,5 +1,6 @@
 const db = require('../models')
 
+//index
 const index = (req, res) => {
     db.Music.find({}, (error, music) => {
       if(error) return res.status(400).json({ error: error.message });
@@ -11,6 +12,7 @@ const index = (req, res) => {
     });
   };
 
+  //create
 const create = (req, res) => {
     db.Music.create(req.body, (err, createdMusic)=> {
         if(err) return res.status(404).json({error:err.message})
@@ -18,7 +20,7 @@ const create = (req, res) => {
     })
 }
 
-
+//delete
 const destroy = (req, res) => {
     db.Music.findByIdAndDelete(req.params.id, (error, deletedMusic) => {
       if(error) return res.status(400).json({ error: error.message });
@@ -29,8 +31,24 @@ const destroy = (req, res) => {
     });
   };
 
+//update
+  const update = (req, res) => {
+    db.Music.findByIdAndUpdate(
+      req.params.id, 
+      {
+        $set: req.body
+      }, 
+      { new: true }, 
+      (error, updatedMusic) => {
+      if(error) return res.status(400).json({ error: error.message });
+  
+      return res.status(200).json(updatedMusic)
+    });
+  }; 
+
 module.exports = {
     index,
     create,
-    destroy
+    destroy,
+    update
 }
