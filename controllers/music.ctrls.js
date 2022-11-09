@@ -1,8 +1,15 @@
 const db = require('../models')
 
 const index = (req, res) => {
-    res.send('Get route is working')
-}
+    db.Music.find({}, (error, music) => {
+      if(error) return res.status(400).json({ error: error.message });
+  
+      return res.status(200).json({
+        music,
+        requestedAt: new Date().toLocaleString()
+      });
+    });
+  };
 
 const create = (req, res) => {
     db.Music.create(req.body, (err, createdMusic)=> {
