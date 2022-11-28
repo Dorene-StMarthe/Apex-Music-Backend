@@ -6,8 +6,13 @@ const playlistSchema = new mongoose.Schema({
     type: String, 
     required: true
   },
+  finished: {
+    type: Boolean,
+    default: false
+  },
 	description: {
-    type: String
+    type: String,
+    default: 'Where words fall, music speaks'
   },
 });
 
