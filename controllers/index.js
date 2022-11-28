@@ -1,3 +1,3 @@
 module.exports = {
-    playlist: require('./playlist.ctrls.js')
+    playlists: require('./playlist.ctrls.js')
 }
