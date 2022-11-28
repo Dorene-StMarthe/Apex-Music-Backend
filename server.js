@@ -9,7 +9,16 @@ const port = process.env.PORT|| 3001;
 const routes = require('./routes');
 const playlists = require('./models/Playlist.js')
 
-
+const whitelist = ['http://localhost:3000', 'https://fathomless-sierra-68956.herokuapp.com']
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
  
   
 //DB connection
@@ -17,7 +26,7 @@ const playlists = require('./models/Playlist.js')
 require('./config/db.connection')
 
 //Middleware
-app.use(cors()) 
+app.use(cors(corsOptions)) 
 app.use(bodyParser.json())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
