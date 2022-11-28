@@ -2,11 +2,11 @@ const db = require('../models')
 
 //index
 const index = (req, res) => {
-    db.Music.find({}, (error, music) => {
+    db.Playlist.find({}, (error, playlist) => {
       if(error) return res.status(400).json({ error: error.message });
   
       return res.status(200).json({
-        music,
+        playlist,
         requestedAt: new Date().toLocaleString()
       });
     });
@@ -14,35 +14,35 @@ const index = (req, res) => {
 
   //create
 const create = (req, res) => {
-    db.Music.create(req.body, (err, createdMusic)=> {
+    db.Playlist.create(req.body, (err, createdPlaylist)=> {
         if(err) return res.status(404).json({error:err.message})
-        return res.status(200).json(createdMusic)
+        return res.status(200).json(createdPlaylist)
     })
 }
 
 //delete
 const destroy = (req, res) => {
-    db.Music.findByIdAndDelete(req.params.id, (error, deletedMusic) => {
+    db.Playlist.findByIdAndDelete(req.params.id, (error, deletedPlaylist) => {
       if(error) return res.status(400).json({ error: error.message });
   
       return res.status(200).json({
-        message: `Music ${deletedMusic.name} deleted successfully`
+        message: `Music ${deletedPlaylist.name} deleted successfully`
       });
     });
   };
 
 //update
   const update = (req, res) => {
-    db.Music.findByIdAndUpdate(
+    db.Playlist.findByIdAndUpdate(
       req.params.id, 
       {
         $set: req.body
       }, 
       { new: true }, 
-      (error, updatedMusic) => {
+      (error, updatedPlaylist) => {
       if(error) return res.status(400).json({ error: error.message });
   
-      return res.status(200).json(updatedMusic)
+      return res.status(200).json(updatedPlaylist)
     });
   }; 
 

@@ -1,3 +1,3 @@
 module.exports = {
-    Music: require('./Music.js')
+    Playlist: require('./Playlist.js')
 }

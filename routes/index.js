@@ -1,5 +1,5 @@
-const { music } = require("../controllers");
+const { playlist } = require("../controllers");
 
 module.exports = {
-    music: require('./music.routes.js')
+    playlist: require('./playlist.routes.js')
 }
