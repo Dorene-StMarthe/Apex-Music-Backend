@@ -12,7 +12,7 @@ const playlistSchema = new mongoose.Schema({
   },
 	description: {
     type: String,
-    default: 'Where words fall, music speaks'
+    default: 'Music speaks when words fail.'
   },
 });
 
